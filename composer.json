@@ -1,0 +1,11 @@
+{
+    "name": "ryota/coincheck",
+    "authors": [
+        {
+            "name": "ryota",
+            "email": "ryotaa7@icloud.com"
+        }
+    ],
+    "require": {
+        "coincheck/coincheck": "1.0.0"
+}}

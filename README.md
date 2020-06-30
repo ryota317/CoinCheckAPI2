@@ -1,0 +1,2 @@
+# CoinCheckAPI
+# CoinCheckAPI2
