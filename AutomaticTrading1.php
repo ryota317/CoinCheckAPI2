@@ -22,8 +22,7 @@ $arrQuery_rate_buy = array(
 );
 
 //残高の取得
- $balance = Authentication($strAccessKey , $balance_url ,$strAccessSecret , 0, "GET");
-
+$balance = Authentication($strAccessKey , $balance_url ,$strAccessSecret , 0, "GET");
 $rate_sell_result =public_api($rate_url,$arrQuery_rate_sell);
 $rate_buy_result =public_api($rate_url,$arrQuery_rate_buy);
 
@@ -31,27 +30,27 @@ $rate_buy_result =public_api($rate_url,$arrQuery_rate_buy);
 if($rate_sell_result["rate"] < 1032250){
 //買う
 //売っているレートに最低購入ビット量0.005をかけて残高を超えていなければ購入
-if($rate_sell_result["rate"] * 0.005 < $balance["jpy"]){
+  if($rate_sell_result["rate"] * 0.005 < $balance["jpy"]){
 
-$arrQuery_order_buy =  array(
-  "pair" => "btc_jpy",
-  "order_type" => "buy",
-  "rate" => floor($rate_sell_result["rate"]),
-  "amount" => 0.005
-);
+    $arrQuery_order_buy =  array(
+      "pair" => "btc_jpy",
+      "order_type" => "buy",
+      "rate" => floor($rate_sell_result["rate"]),
+      "amount" => 0.005
+    );
 
- $order_buy_result = Authentication($strAccessKey ,  $new_order_url ,$strAccessSecret , $arrQuery_order_buy
- , "POST");
-var_dump($order_buy_result);exit();
+    $order_buy_result = Authentication($strAccessKey ,  $new_order_url ,$strAccessSecret , $arrQuery_order_buy
+    , "POST");
+    var_dump($order_buy_result);exit();
 
- if($order_buy_result['success'] ){
-//購入成功
-echo '成功';
- }else{
-//購入失敗
-echo '失敗';
- }
-}
+    if($order_buy_result['success'] ){
+      //購入成功
+      echo '成功';
+    }else{
+      //購入失敗
+      echo '失敗';
+    }
+  }
 }
 if($rate_sell_result["rate"] > 1032750){
   //売る

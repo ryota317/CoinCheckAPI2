@@ -28,7 +28,6 @@
     );
 
     $curl = curl_init();
-
     curl_setopt($curl, CURLOPT_URL, $strUrl );
 
     if($request_type == 'POST'){
@@ -50,8 +49,7 @@
 
 
 function public_api($url,$request_body = 0){
-    $strUrl = $url;
-
+  $strUrl = $url;
   //リクエストボディが無いとき
   if($request_body === 0){
     $strMessage = $strUrl ;
@@ -60,7 +58,6 @@ function public_api($url,$request_body = 0){
   }
 
   $curl = curl_init();
-
   curl_setopt($curl, CURLOPT_URL, $strMessage );
   curl_setopt($curl, CURLOPT_CUSTOMREQUEST, 'GET');
   curl_setopt($curl, CURLOPT_SSL_VERIFYPEER, false);
